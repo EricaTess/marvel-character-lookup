@@ -1,13 +1,10 @@
 import React from 'react';
-import './App.css';
-import Characters from './components/Characters'
+
 
 export default function App() {
   return (
     <div className="App">
-      <Characters />
+      This is my app in characters...
     </div>
   );
 }
-
-
