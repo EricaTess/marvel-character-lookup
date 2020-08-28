@@ -99,7 +99,7 @@ div .input-group {
 }
 
 
-/* No Character */
+/* If No Character is Found */
 
 div .row {
   display: flex;

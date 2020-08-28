@@ -11,6 +11,7 @@ export default class CharacterCards extends Component {
           <Card.Img variant="top" src={this.props.img.path + '.' + this.props.img.extension} />
           <Card.Body>
             <Card.Title>{this.props.characters.name}</Card.Title>
+            {/* /* Character Info to add later */}
             {/* <Card.Text>
                 {this.props.characters.description} {' '}
             </Card.Text> */}

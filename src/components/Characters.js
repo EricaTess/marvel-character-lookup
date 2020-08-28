@@ -41,7 +41,7 @@ export default class Characters extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    //Get Marvel Character from user's input
+    //Add Marvel Character input to API Request
     fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' + process.env.REACT_APP_API_KEY + this.state.query)
         .then(res =>  res.json())
         .then(data => this.setState({
@@ -55,6 +55,7 @@ export default class Characters extends Component {
 
   render() {
 
+    //Add results from API Request to Character Card components
     const validCharacter = this.state.characters;
     let showCharacters;
     let noCharacters;
@@ -86,7 +87,7 @@ export default class Characters extends Component {
                     <CardColumns style={{justifyContent: 'center', display: 'contents'}}>
                         {showCharacters}
                     </CardColumns>
-                    <span className="no-character">{noCharacters}</span>
+                    {noCharacters}
                 </Row>
             </Container>
         </React.Fragment>
