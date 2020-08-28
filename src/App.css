@@ -70,11 +70,17 @@ div .input-group {
   padding: 2rem;
 }
 
-div .input-group input .form-control {
+.search-input-box {
+  color: black;
   border-bottom-width: thick;
   border-top-style: none;
   border-left-style: none;
   border-bottom-color: black;
+}
+
+.submit-button {
+  background: red;
+  border-color: red;
 }
 
 button .btn .btn-primary {

@@ -72,10 +72,11 @@ export default class Characters extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <InputGroup>
                         <FormControl
+                            className="search-input-box"
                             placeholder="Search Marvel Character"
                             onChange={this.handleTextInput} />
                         <InputGroup.Append>
-                            <Button type="submit">Submit</Button>
+                            <Button className="submit-button" type="submit">Submit</Button>
                         </InputGroup.Append>
                     </InputGroup>
                 </form>
