@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Button, CardColumns, InputGroup, FormControl, Row, Col } from 'react-bootstrap';
 
 import CharacterCards from './CharacterCards'
 
@@ -25,9 +26,16 @@ export default class Characters extends Component {
 
   //Set user input (character name) to state
   handleTextInput = (e) => {
-      this.setState({
-          query: '&name=' + e.target.value
-      })
+      //if no character name added, show all characters
+      if (e.target.value === '') {
+          this.setState({
+              query: ''
+          })
+      } else {
+        this.setState({
+            query: '&name=' + e.target.value
+        })
+      }
   }
 
   handleSubmit = (e) => {
@@ -40,25 +48,44 @@ export default class Characters extends Component {
             characters: data.data.results
         },
         console.log(data.data.results)))
-        
-
-        //If fetch result is empty, return a message saying 'invalid character'
-
+        .catch(err => {
+            console.log('Error fetching and parsing data', err)
+        })
   }
 
   render() {
+
+    const validCharacter = this.state.characters;
+    let showCharacters;
+    //If fetch result is empty, return a message
+    if (validCharacter.length !== 0) {
+        showCharacters = this.state.characters.map(char => {
+            return <CharacterCards key={char.id} characters={char} img={char.thumbnail}/>})
+    } else {
+        showCharacters = <p>Move along, Nothing to see here</p>
+    }
+    
     return (
         <React.Fragment>
             <div className="search-bar">
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" className="find-char"
-                        onChange={this.handleTextInput}
-                        placeholder="Choose your Marvel Character"/>
-                    <button type="submit">Submit</button>
+                    <InputGroup>
+                        <FormControl
+                            placeholder="Search Marvel Character"
+                            onChange={this.handleTextInput} />
+                        <InputGroup.Append>
+                            <Button type="submit">Submit</Button>
+                        </InputGroup.Append>
+                    </InputGroup>
                 </form>
             </div>
-            {this.state.characters.map(char => {
-                return <CharacterCards key={char.id} characters={char} img={char.thumbnail}/>})}
+            <Container fluid>
+                <Row>
+                    <CardColumns style={{justifyContent: 'center', display: 'inline-block'}}>
+                        {showCharacters}
+                    </CardColumns>
+                </Row>
+            </Container>
         </React.Fragment>
       );
   }
