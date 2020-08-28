@@ -78,14 +78,26 @@ div .input-group {
   border-bottom-color: black;
 }
 
+.search-input-box:focus {
+  border-color: red;
+  box-shadow: none;
+}
+
 .submit-button {
   background: red;
   border-color: red;
 }
 
-button .btn .btn-primary {
-  background: red;
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active {
+  color: white;
+  background-color: black;
+  border-color: black;
+  box-shadow: none;
 }
+
 
 /* No Character */
 
