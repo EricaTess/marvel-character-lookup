@@ -47,7 +47,6 @@ export default class Characters extends Component {
   }
 
   render() {
-
     return (
         <React.Fragment>
             <div className="search-bar">
@@ -59,8 +58,7 @@ export default class Characters extends Component {
                 </form>
             </div>
             {this.state.characters.map(char => {
-                return char.name})}
-            <CharacterCards characters={this.state.characters}/>
+                return <CharacterCards key={char.id} characters={char}/>})}
         </React.Fragment>
       );
   }
