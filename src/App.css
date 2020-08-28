@@ -39,6 +39,12 @@
 
 /* Cards */
 
+.card-columns .card {
+  margin-bottom: .75rem;
+  margin-left: .75rem;
+  margin-right: .75rem;
+}
+
 .card-img, .card-img-top {
   width: 100%;
   height: 10rem;
@@ -50,5 +56,37 @@ div .card-body {
 
 .h5 {
   font-size: 1rem;
+}
+
+div .card-columns {
+  column-count: 4;
+  padding-top: 2rem;
+}
+
+
+/* Search Bar */
+
+div .input-group {
+  padding: 2rem;
+}
+
+div .input-group input .form-control {
+  border-bottom-width: thick;
+  border-top-style: none;
+  border-left-style: none;
+  border-bottom-color: black;
+}
+
+button .btn .btn-primary {
+  background: red;
+}
+
+/* No Character */
+
+div .row {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  font-size: 2rem;
 }
 

@@ -57,12 +57,13 @@ export default class Characters extends Component {
 
     const validCharacter = this.state.characters;
     let showCharacters;
+    let noCharacters;
     //If fetch result is empty, return a message
     if (validCharacter.length !== 0) {
         showCharacters = this.state.characters.map(char => {
             return <CharacterCards key={char.id} characters={char} img={char.thumbnail}/>})
     } else {
-        showCharacters = <p>Move along, Nothing to see here</p>
+        noCharacters = <p>Move along, Nothing to see here</p>
     }
     
     return (
@@ -81,9 +82,10 @@ export default class Characters extends Component {
             </div>
             <Container fluid>
                 <Row>
-                    <CardColumns style={{justifyContent: 'center', display: 'inline-block'}}>
+                    <CardColumns style={{justifyContent: 'center', display: 'contents'}}>
                         {showCharacters}
                     </CardColumns>
+                    <span className="no-character">{noCharacters}</span>
                 </Row>
             </Container>
         </React.Fragment>
