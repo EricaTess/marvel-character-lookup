@@ -13,7 +13,7 @@ export default class CharacterCards extends Component {
       return(
         <React.Fragment>
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={this.props.img.path + '.' + this.props.img.extension} />
                 <Card.Body>
                     <Card.Title>{this.props.characters.name}</Card.Title>
                     <Card.Text>

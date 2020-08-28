@@ -58,7 +58,7 @@ export default class Characters extends Component {
                 </form>
             </div>
             {this.state.characters.map(char => {
-                return <CharacterCards key={char.id} characters={char}/>})}
+                return <CharacterCards key={char.id} characters={char} img={char.thumbnail}/>})}
         </React.Fragment>
       );
   }
