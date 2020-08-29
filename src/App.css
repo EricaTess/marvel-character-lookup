@@ -37,6 +37,14 @@
   }
 }
 
+/* Cards Layout */
+
+div .row {
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 /* Cards */
 
 .card-columns .card {
@@ -69,6 +77,12 @@ div .char-description {
 
 
 /* Search Bar */
+
+form {
+  display: inline-table;
+  width: 70%;
+  padding-top: 2rem;
+}
 
 div .input-group {
   padding: 2rem;

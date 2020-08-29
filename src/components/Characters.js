@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Button, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
+import { debounce } from "throttle-debounce";
 import deadpool from './deadpool.png'
 import CharacterCards from './CharacterCards'
 

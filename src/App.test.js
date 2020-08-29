@@ -17,14 +17,19 @@ import App from './App';
 describe('Testing App Component', () => {
   test('renders App component', () => {
     render(<App />)
+    screen.debug();
+    
+    expect(screen.getByText('Move along, Nothing to see here')).toBeInTheDocument();
   });
+});
 
-  // test('nothing to see here message shown while API request is in process', async () => {
-  //   render(<App />);
-  //   const loading = screen.getAllByText('Move along, Nothing to see here');
-  //   expect(loading).toBeInTheDocument();
-  //   await waitForElementToBeRemoved(() => screen.getAllByText('Move along, Nothing to see here'));
-  // });
+// describe('Testing Characters Component', () => {
+//   test('renders character name', () => {
+    
+//   })
+// })
+
+ 
 
   // test('character name is rendered', async () => {
   //   render(<App />);
@@ -43,4 +48,4 @@ describe('Testing App Component', () => {
   //   expect(errorMessage).toBeInTheDocument();
   // });
   
-});
+
