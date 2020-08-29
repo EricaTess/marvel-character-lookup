@@ -60,6 +60,7 @@ div .row {
 
 div .card-body {
   height: 5rem;
+  background-color: black;
 }
 
 .h5 {
