@@ -113,6 +113,7 @@ div .input-group {
   border-bottom-width: thick;
   border-top-style: none;
   border-left-style: none;
+  border-right-style: none;
   border-bottom-color: black;
 }
 
