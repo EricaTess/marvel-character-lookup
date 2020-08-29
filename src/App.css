@@ -58,9 +58,27 @@ div .row {
   height: 10rem;
 }
 
+.card-title {
+  margin:0
+}
+
 div .card-body {
   height: 5rem;
   background-color: black;
+  display: contents;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+p .char-description {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+div .card-title {
+  padding: 1rem;
 }
 
 .h5 {

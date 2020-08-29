@@ -14,6 +14,7 @@ export default class Characters extends Component {
     }
 
     componentDidMount = () => {
+        
         //Get 20 characters from Marvel API
         fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' + process.env.REACT_APP_API_KEY + this.state.query)
         .then(res =>  res.json())
@@ -35,7 +36,7 @@ export default class Characters extends Component {
             })
         } else {
             this.setState({
-                query: '&name=' + e.target.value
+                query: '&nameStartsWith=' + e.target.value
             })
         }
     }
@@ -54,22 +55,6 @@ export default class Characters extends Component {
                 console.log('Error fetching and parsing data', err)
             })
     }
-
-    // createCards = () => {
-    //     //Add results from API Request to Character Card components
-    //     const validCharacter = this.state.characters;
-    //     // let showCharacters;
-    //     //If fetch result is empty, return a message
-    //     if (validCharacter.length !== 0) {
-    //         this.state.characters.map(char => {
-    //             return <CharacterCards key={char.id} id={char.id} characters={char} img={char.thumbnail}/>});
-    //     } else {
-    //         return (<div className='oops-message'>
-    //             <p>Move along, Nothing to see here</p>
-    //             <img className='oops-deadpool' src={deadpool} />
-    //         </div>);
-    //     }
-    // }
 
     render() {
         //Add results from API Request to Character Card components
