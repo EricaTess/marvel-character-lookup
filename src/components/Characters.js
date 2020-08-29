@@ -5,30 +5,23 @@ import deadpool from './deadpool.png'
 import CharacterCards from './CharacterCards'
 
 export default class Characters extends Component {
-    constructor () {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-        characters: [],
-        query: ''
+            characters: [],
+            query: ''
         }
+        //Will fetch characters from API after 200ms
+        this.fetchCharacters = debounce(200, this.fetchCharacters);
     }
-
+    
     componentDidMount = () => {
-        
-        //Get 20 characters from Marvel API
-        fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' + process.env.REACT_APP_API_KEY + this.state.query)
-        .then(res =>  res.json())
-        .then(data => this.setState({
-            characters: data.data.results
-        },
-        console.log(data.data.results)))
-        .catch((err) => {
-            console.log('Error:', err);
-        });      
+        //render all characters upon initial render
+        this.fetchCharacters();
     }
 
-    //Set user input (character name) to state
     handleTextInput = (e) => {
+        //Set user input (character name) to state
         //if no character name added, show all characters
         if (e.target.value === '') {
             this.setState({
@@ -39,40 +32,28 @@ export default class Characters extends Component {
                 query: '&nameStartsWith=' + e.target.value
             })
         }
+        this.fetchCharacters();
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-
-        //Add Marvel Character User Input to API Request
+    fetchCharacters = () => {
+        //Fetch characters from API by user input
         fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' + process.env.REACT_APP_API_KEY + this.state.query)
-            .then(res =>  res.json())
-            .then(data => this.setState({
-                characters: data.data.results
-            },
-            console.log(data.data.results)))
-            .catch(err => {
-                console.log('Error fetching and parsing data', err)
-            })
+        .then(res =>  res.json())
+        .then(data => this.setState({
+            characters: data.data.results
+        },
+        console.log(data.data.results)))
+        .catch((err) => {
+            console.log('Error:', err);
+        }); 
     }
 
     render() {
         //Add results from API Request to Character Card components
         const validCharacter = this.state.characters;
-        let showCharacters;
-        let noCharacters;
-        //If fetch result is empty, return a message
-        if (validCharacter.length !== 0) {
-            showCharacters = this.state.characters.map(char => {
+        let showCharacters = this.state.characters.map(char => {
                 return <CharacterCards key={char.id} id={char.id} characters={char} img={char.thumbnail}/>
-            });
-        } else {
-            noCharacters = (<div className='oops-message'>
-                <p>Move along, Nothing to see here</p>
-                <img className='oops-deadpool' src={deadpool} />
-                </div>
-            );
-        }
+        });
 
         return (
             <React.Fragment>
@@ -83,17 +64,18 @@ export default class Characters extends Component {
                                 className="search-input-box"
                                 placeholder="Search Marvel Character"
                                 onChange={this.handleTextInput} />
-                            <InputGroup.Append>
-                                <Button className="submit-button" type="submit">Submit</Button>
-                            </InputGroup.Append>
                         </InputGroup>
                     </form>
                 </div>
                 <Container fluid>
                     <Row>
                         <CardColumns style={{justifyContent: 'center', display: 'contents'}}>
-                            {showCharacters}
-                            {noCharacters}
+                            {/* If fetch result is empty, return a message */}
+                            {validCharacter.length ? showCharacters : <div className='oops-message'>
+                                        <p>Move along, Nothing to see here</p>
+                                        <img className='oops-deadpool' src={deadpool} />
+                                    </div>
+                            }
                         </CardColumns>
                     </Row>
                 </Container>
