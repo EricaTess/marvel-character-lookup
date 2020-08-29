@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Button, CardColumns, InputGroup, FormControl, Row, Col } from 'react-bootstrap';
-
+import { Container, Button, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
+import deadpool from './deadpool.png'
 import CharacterCards from './CharacterCards'
 
 export default class Characters extends Component {
@@ -8,7 +8,6 @@ export default class Characters extends Component {
       super();
       this.state = {
         characters: [],
-        image: null,
         query: ''
       }
   }
@@ -62,7 +61,7 @@ export default class Characters extends Component {
     //If fetch result is empty, return a message
     if (validCharacter.length !== 0) {
         showCharacters = this.state.characters.map(char => {
-            return <CharacterCards key={char.id} characters={char} img={char.thumbnail}/>})
+            return <CharacterCards key={char.id} id={char.id} characters={char} img={char.thumbnail}/>})
     } else {
         noCharacters = <p>Move along, Nothing to see here</p>
     }
@@ -87,7 +86,10 @@ export default class Characters extends Component {
                     <CardColumns style={{justifyContent: 'center', display: 'contents'}}>
                         {showCharacters}
                     </CardColumns>
-                    {noCharacters}
+                    <div className='oops-message'>
+                      {noCharacters}
+                      <img className='oops-deadpool' src={deadpool} />
+                    </div>
                 </Row>
             </Container>
         </React.Fragment>

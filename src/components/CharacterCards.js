@@ -3,18 +3,27 @@ import { Card } from 'react-bootstrap';
 // import '../public/styles/CharacterCards.css';
 
 export default class CharacterCards extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showDescription: false
+    }
+  }
 
   render() {
 
     return(
         <Card className='cards' bg={'dark'} text={'light'} style={{ width: '10rem' }}>
           <Card.Img variant="top" src={this.props.img.path + '.' + this.props.img.extension} />
-          <Card.Body>
+          <Card.Body
+            id={this.props.id}
+            onMouseEnter={() => this.setState({showDescription: true})}
+            onMouseLeave={() => this.setState({showDescription: false})}>
             <Card.Title>{this.props.characters.name}</Card.Title>
             {/* /* Character Info to add later */}
-            {/* <Card.Text>
-                {this.props.characters.description} {' '}
-            </Card.Text> */}
+            <Card.Text>
+              <div className='char-description'>{this.state.showDescription && (this.props.characters.description)}</div>
+            </Card.Text>
           </Card.Body>
         </Card>    
     )

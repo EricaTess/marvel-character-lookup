@@ -63,6 +63,10 @@ div .card-columns {
   padding-top: 2rem;
 }
 
+div .char-description {
+  font-size: 0.5rem;
+}
+
 
 /* Search Bar */
 
@@ -108,3 +112,7 @@ div .row {
   font-size: 2rem;
 }
 
+img.oops-deadpool {
+  height: auto;
+  width: 25rem;
+}
