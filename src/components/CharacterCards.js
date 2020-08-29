@@ -19,7 +19,7 @@ export default class CharacterCards extends Component {
                     onMouseLeave={() => this.setState({showDescription: false})}>
                     <Card.Title>{this.props.characters.name}</Card.Title>
                     <Card.Text>
-                        <div className='char-description'>{this.state.showDescription && (this.props.characters.description)}</div>
+                        {/* <div className='char-description'>{this.state.showDescription && (this.props.characters.description)}</div> */}
                     </Card.Text>
                 </Card.Body>
             </Card>    
