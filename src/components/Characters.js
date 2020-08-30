@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
+import { Container, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
 import { debounce } from "throttle-debounce";
 import deadpool from './deadpool.png'
 import CharacterCards from './CharacterCards'
@@ -11,8 +11,8 @@ export default class Characters extends Component {
             characters: [],
             query: ''
         }
-        //Will fetch characters from API after 200ms
-        this.fetchCharacters = debounce(200, this.fetchCharacters);
+        //Will fetch characters from API after 300ms
+        this.fetchCharacters = debounce(300, this.fetchCharacters);
     }
     
     componentDidMount = () => {
@@ -22,7 +22,7 @@ export default class Characters extends Component {
 
     handleTextInput = (e) => {
         //Set user input (character name) to state
-        //if no character name added, show all characters
+        //if user input is empty, show all characters by clearing query
         if (e.target.value === '') {
             this.setState({
                 query: ''
@@ -37,7 +37,8 @@ export default class Characters extends Component {
 
     fetchCharacters = () => {
         //Fetch characters from API by user input
-        fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' + process.env.REACT_APP_API_KEY + this.state.query)
+        fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' 
+                + process.env.REACT_APP_API_KEY + this.state.query)
         .then(res =>  res.json())
         .then(data => this.setState({
             characters: data.data.results
@@ -48,12 +49,11 @@ export default class Characters extends Component {
         }); 
     }
 
+    hasCharacters = () => {
+        return this.state.characters.length
+    }
+
     render() {
-        //Add results from API Request to Character Card components
-        const validCharacter = this.state.characters;
-        let showCharacters = this.state.characters.map(char => {
-                return <CharacterCards key={char.id} id={char.id} characters={char} img={char.thumbnail}/>
-        });
 
         return (
             <React.Fragment>
@@ -70,8 +70,14 @@ export default class Characters extends Component {
                 <Container fluid>
                     <Row>
                         <CardColumns style={{justifyContent: 'center', display: 'contents'}}>
-                            {/* If fetch result is empty, return a message */}
-                            {validCharacter.length ? showCharacters : <div className='oops-message'>
+                            {/* Display character cards */}
+                            {/* If there are no valid characters, display oops message */}
+                            {this.hasCharacters() ?
+                                this.state.characters.map(char => {
+                                    return <CharacterCards key={char.id} id={char.id} 
+                                                           characters={char} 
+                                                           img={char.thumbnail}/>
+                                }) : <div className='oops-message'>
                                         <p>Move along, Nothing to see here</p>
                                         <img className='oops-deadpool' src={deadpool} />
                                     </div>
