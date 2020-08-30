@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Container, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
 import { debounce } from "throttle-debounce";
-import deadpool from './deadpool.png'
+
+
+// Component imports
 import CharacterCards from './CharacterCards'
 
 export default class Characters extends Component {
@@ -79,7 +81,6 @@ export default class Characters extends Component {
                                                            img={char.thumbnail}/>
                                 }) : <div className='oops-message'>
                                         <p>Move along, Nothing to see here</p>
-                                        <img className='oops-deadpool' src={deadpool} />
                                     </div>
                             }
                         </CardColumns>
