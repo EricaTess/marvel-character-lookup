@@ -12,6 +12,15 @@ export default class CharacterCards extends Component {
 
     render() {
 
+        const charImage = () => {
+            if (this.props.img.path === undefined) {
+                return ''
+            } else {
+                return 
+            }
+        } 
+            
+
         return(
             <Card className='cards' bg={'dark'} text={'light'} style={{ width: '10rem' }}>
                 <Card.Img variant="top" src={this.props.img.path + '.' + this.props.img.extension} />
