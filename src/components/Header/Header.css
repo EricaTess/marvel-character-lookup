@@ -1,0 +1,8 @@
+/* Header */
+h1.header {
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    letter-spacing: 0.1rem;
+    text-shadow: -0.5px 0 red, 0 0.5px red, 0.5px 0 red, 0 -0.5px red;
+  }

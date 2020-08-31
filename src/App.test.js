@@ -9,9 +9,6 @@ import {
 
 // Components
 import App from './App';
-import Characters from './components/Characters';
-import handleTextInput from './components/Characters';
-
 
 
 describe('Testing App Component', () => {
@@ -19,7 +16,7 @@ describe('Testing App Component', () => {
     render(<App />)
     screen.debug();
     
-    expect(screen.getByText('Move along, Nothing to see here')).toBeInTheDocument();
+    expect(screen.getByText('Marvel Character Search')).toBeInTheDocument();
   });
 });
 

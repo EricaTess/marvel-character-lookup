@@ -1,0 +1,50 @@
+/* Cards Layout */
+div .row {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  /* If No Character is Found */
+div .row {
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center;
+    font-size: 2rem;
+}
+
+/* Search Bar */
+form {
+    display: inline-table;
+    width: 70%;
+    padding-top: 2rem;
+  }
+  
+  div .input-group {
+    padding: 2rem;
+  }
+  
+  .search-input-box {
+    color: black;
+    border-bottom-width: thick;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-color: black;
+  }
+  
+  .search-input-box:focus {
+    border-color: red;
+    box-shadow: none;
+  }
+  
+  .btn-primary:hover, 
+  .btn-primary:focus, 
+  .btn-primary:active, 
+  .btn-primary.active {
+    color: white;
+    background-color: black;
+    border-color: black;
+    box-shadow: none;
+  }

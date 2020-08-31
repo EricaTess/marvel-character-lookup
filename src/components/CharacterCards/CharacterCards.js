@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
+import './CharacterCards.css';
 
 export default class CharacterCards extends Component {
     constructor() {

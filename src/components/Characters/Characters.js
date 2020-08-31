@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { Container, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
 import { debounce } from "throttle-debounce";
+import './Characters.css';
 
 
 // Component imports
-import CharacterCards from './CharacterCards'
+import CharacterCards from '../CharacterCards/CharacterCards'
 
 export default class Characters extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            characters: [],
-            query: ''
+            characters: null,
+            query: '',
+            invalidCharacter: false
         }
         //Will fetch characters from API after 300ms
-        this.fetchCharacters = debounce(300, this.fetchCharacters);
+        this.fetchCharacters = debounce(500, this.fetchCharacters);
     }
     
     componentDidMount = () => {
@@ -34,6 +36,7 @@ export default class Characters extends Component {
                 query: '&nameStartsWith=' + e.target.value
             })
         }
+
         this.fetchCharacters();
     }
 
@@ -44,18 +47,26 @@ export default class Characters extends Component {
         .then(res =>  res.json())
         .then(data => this.setState({
             characters: data.data.results
-        },
-        console.log(data.data.results)))
-        .catch((err) => {
-            console.log('Error:', err);
-        }); 
+            },
+            console.log(data.data.results))  
+        );
     }
 
-    hasCharacters = () => {
-        return this.state.characters.length
-    }
 
     render() {
+
+        let showCharacter;
+        if (this.state.characters) {
+            showCharacter = this.state.characters.map(char => {
+                return <CharacterCards key={char.id} id={char.id} 
+                                       characters={char} 
+                                       img={char.thumbnail}/>
+            })
+        } else if (this.state.characters !== null && this.state.characters === []) {
+            showCharacter = <div className='oops-message'>
+                    <p>Move along, Nothing to see here</p>
+                   </div>   
+        }
 
         return (
             <React.Fragment>
@@ -64,7 +75,7 @@ export default class Characters extends Component {
                         <InputGroup>
                             <FormControl
                                 className="search-input-box"
-                                placeholder="Search Marvel Character"
+                                placeholder="Search"
                                 onChange={this.handleTextInput} />
                         </InputGroup>
                     </form>
@@ -74,15 +85,7 @@ export default class Characters extends Component {
                         <CardColumns style={{justifyContent: 'center', display: 'contents'}}>
                             {/* Display character cards */}
                             {/* If there are no valid characters, display oops message */}
-                            {this.hasCharacters() ?
-                                this.state.characters.map(char => {
-                                    return <CharacterCards key={char.id} id={char.id} 
-                                                           characters={char} 
-                                                           img={char.thumbnail}/>
-                                }) : <div className='oops-message'>
-                                        <p>Move along, Nothing to see here</p>
-                                    </div>
-                            }
+                            {showCharacter}
                         </CardColumns>
                     </Row>
                 </Container>

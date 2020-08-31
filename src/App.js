@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 
 //Component imports
-import Characters from './components/Characters';
-import Header from './components/Header'
+import Characters from './components/Characters/Characters';
+import Header from './components/Header/Header'
 
 
 require('dotenv').config()
