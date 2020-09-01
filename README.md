@@ -1,5 +1,3 @@
-Marvel Character Look up for Udemy Coding Challenge
-
 # Marvel Character Search
 
 ## Summary
@@ -20,7 +18,7 @@ Search for your favorite Marvel Character!
 ## <a name="installation"></a>Setup/Installation
 
 #### Requirements:
-- [Marvel API Key] (https://developer.marvel.com/)
+- [Marvel API Key](https://developer.marvel.com/)
 
 To have this app running on your local computer, please follow the below steps:
 
@@ -37,6 +35,6 @@ $ cd udemy-challenge
 $ npm start
 ```
 
-Then open [http://localhost:3000/] (http://localhost:3000/) to see your app.
+Then open [http://localhost:3000/](http://localhost:3000/) to see your app.
 
 Have fun!
