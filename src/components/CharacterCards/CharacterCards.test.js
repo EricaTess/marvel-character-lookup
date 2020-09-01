@@ -4,12 +4,6 @@ import CharacterCards from './CharacterCards';
 import { render, screen } from '@testing-library/react';
 
 
-xit('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<CharacterCards />, div);
-});
-
-
 test('contains all props', () => {
     const char = {
         id: 1,
@@ -26,17 +20,6 @@ test('contains all props', () => {
     expect(screen.getByText(/kitteh/i)).toBeInTheDocument();
     // screen.debug();
   });
-
-
- 
-  
-
-// test('character name is rendered', async () => {
-//     render(<CharacterCards />);
-//     const name = await screen.getByText(/kitteh/i);
-//     expect(name).toBeInTheDocument();
-//     screen.debug();
-// });
 
 
   

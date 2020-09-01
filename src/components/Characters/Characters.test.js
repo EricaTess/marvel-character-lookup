@@ -1,49 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Characters from './Characters';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import {getCharacters} from './Characters';
 
 
-
-it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Characters />, div);
-});
+jest.mock('node-fetch');
+import fetch from 'node-fetch';
+const {Response} = jest.requireActual('node-fetch');
 
 
-beforeAll(() => jest.spyOn(window, 'fetch'))
 
 test('testing api', async () => {
 
-    window.fetch.mockReturnValue({
-        data: {
-            data: []
-        }
-    });
+    fetch.mockReturnValue(Promise.resolve(new Response('Thor')));
 
-    render(<Characters />);
+    const char = await getCharacters();
 
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(char).toBe('Thor')
+
+    screen.debug();
 })
 
 
-// window.fetch = jest.fn(() => {
-//     const characterName = {
-//         id: 1,
-//         thumbnail: {
-//             path: 'https://pytorch.org/tutorials/_images/cat_superres_with_ort',
-//             extension: 'jpg'
-//         },
-//         name: 'Kitteh'
-//     };
-  
-//     return Promise.resolve({
-//       json: () => Promise.resolve({
-//           data: {
-//               data: characterName
-//           }
-//       }),
-//     });
-//   });
+
+
+//find the text input
+//send keys to fetch request ~fire event key down
+//assert fetch was called ~
 
 

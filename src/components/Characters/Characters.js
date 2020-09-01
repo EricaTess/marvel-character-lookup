@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Container, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
 import { debounce } from "throttle-debounce";
 import './Characters.css';
-import deadpool from './deadpool.png'
+import deadpool from './deadpool.png';
+import fetch from 'node-fetch';
 
 // Component imports
 import CharacterCards from '../CharacterCards/CharacterCards'
@@ -76,7 +77,6 @@ export default class Characters extends Component {
 
     render() {
 
-        console.log('Testing for Test', this.state.characters)
         return (
             <React.Fragment>
                 <div className="search-bar">
@@ -101,4 +101,12 @@ export default class Characters extends Component {
             </React.Fragment>
         );
     }
+}
+
+//For testing fetch request
+export const getCharacters = async () => {
+    const response = await fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' 
+            + process.env.REACT_APP_API_KEY + '&nameStartsWith=thor');
+    const charName = await response.text();
+    return charName;
 }
