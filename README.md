@@ -19,6 +19,8 @@ Search for your favorite Marvel Character!
 #### Requirements:
 - [Marvel API Key](https://developer.marvel.com/)
 
+In the Marvel Website, go to 'My Developer Account' and add `localhost` to 'Your authorized referrers'
+
 To have this app running on your local computer, please follow the below steps:
 
 Clone repository:

@@ -17,7 +17,7 @@ export default class Characters extends Component {
             query: '',
             invalidCharacter: false
         }
-        //Will fetch characters from API after 300ms
+        //Will fetch characters from API after 500ms
         this.fetchCharacters = debounce(500, this.fetchCharacters);
     }
     
