@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Container, CardColumns, InputGroup, FormControl, Row } from 'react-bootstrap';
 import { debounce } from "throttle-debounce";
 import './Characters.css';
-
+import deadpool from './deadpool.png'
 
 // Component imports
 import CharacterCards from '../CharacterCards/CharacterCards'
+
 
 export default class Characters extends Component {
     constructor(props) {
@@ -52,22 +53,30 @@ export default class Characters extends Component {
         );
     }
 
-
-    render() {
-
-        let showCharacter;
-        if (this.state.characters) {
-            showCharacter = this.state.characters.map(char => {
+    showCharacter = () => {
+        
+        if (this.state.characters === null) {
+            return (<div>
+                        <p>Loading...</p>
+                    </div>);
+        } else if (this.state.characters.length === 0) {
+            console.log(this.state.characters === [])
+            return (<div className='oops-message'>
+                                <p>Move along, Nothing to see here</p>
+                                <img src={deadpool} alt={'Nothing to see here'}/>
+                            </div>)  
+        } else if (this.state.characters.length > 0) {
+            return this.state.characters.map(char => {
                 return <CharacterCards key={char.id} id={char.id} 
                                        characters={char} 
                                        img={char.thumbnail}/>
             })
-        } else if (this.state.characters !== null && this.state.characters === []) {
-            showCharacter = <div className='oops-message'>
-                    <p>Move along, Nothing to see here</p>
-                   </div>   
         }
+    }
 
+    render() {
+
+        console.log('Testing for Test', this.state.characters)
         return (
             <React.Fragment>
                 <div className="search-bar">
@@ -85,7 +94,7 @@ export default class Characters extends Component {
                         <CardColumns style={{justifyContent: 'center', display: 'contents'}}>
                             {/* Display character cards */}
                             {/* If there are no valid characters, display oops message */}
-                            {showCharacter}
+                            {this.showCharacter()}
                         </CardColumns>
                     </Row>
                 </Container>

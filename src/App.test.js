@@ -14,7 +14,7 @@ import App from './App';
 describe('Testing App Component', () => {
   test('should render App component', () => {
     render(<App />)
-    screen.debug();
+    // screen.debug();
     
     expect(screen.getByText('Marvel Character Search')).toBeInTheDocument();
   });

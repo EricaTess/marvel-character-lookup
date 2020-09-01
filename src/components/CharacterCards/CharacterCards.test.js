@@ -9,10 +9,6 @@ xit('renders without crashing', () => {
     ReactDOM.render(<CharacterCards />, div);
 });
 
-test('hello world', () => {
-    render(<p>Hello world</p>);
-    expect(screen.getByText('Hello world')).toBeInTheDocument();
-});
 
 test('contains all props', () => {
     const char = {
@@ -28,6 +24,19 @@ test('contains all props', () => {
         img={char.thumbnail}/>);
   
     expect(screen.getByText(/kitteh/i)).toBeInTheDocument();
+    // screen.debug();
   });
+
+
+ 
+  
+
+// test('character name is rendered', async () => {
+//     render(<CharacterCards />);
+//     const name = await screen.getByText(/kitteh/i);
+//     expect(name).toBeInTheDocument();
+//     screen.debug();
+// });
+
 
   

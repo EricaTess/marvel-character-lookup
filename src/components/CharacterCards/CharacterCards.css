@@ -11,7 +11,7 @@
   }
   
   .card-title {
-    margin:0
+    margin: 0;
   }
   
   div .card-body {
@@ -24,6 +24,12 @@
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .popover-body {
+    background-color: black;
+    color: white;
+    font-size-adjust: inherit;
   }
   
   .h5 {
