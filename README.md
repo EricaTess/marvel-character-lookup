@@ -31,6 +31,7 @@ Replace 'process.env.REACT_APP_API_KEY' in Characters.js file with Marvel API Ke
 Start App:
 ```
 $ cd udemy-challenge
+$ npm install
 $ npm start
 ```
 
