@@ -12,7 +12,7 @@ Look up Marvel characters by name. This fun project was made for Udemy's Coding 
 ## <a name="features"></a>Features
 
 Search for your favorite Marvel Character!
-![Search](/public/img/captured.gif)
+![Search](/public/captured.gif)
 
 ## <a name="installation"></a>Setup/Installation
 
