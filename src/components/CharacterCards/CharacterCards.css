@@ -25,12 +25,6 @@
     padding-right: 1rem;
     padding-bottom: 1rem;
   }
-
-  .popover-body {
-    background-color: black;
-    color: white;
-    font-size-adjust: inherit;
-  }
   
   .h5 {
     font-size: 1rem;
@@ -40,7 +34,14 @@
     column-count: 4;
     padding-top: 2rem;
   }
-  
+
+  /* Popover */
+  .popover-body {
+    background-color: black;
+    color: white;
+  }
+
   div .char-description {
-    font-size: 0.5rem;
+    font-size: 10px;
+    font-weight: bold;
   }
