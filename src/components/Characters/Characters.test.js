@@ -9,7 +9,7 @@ jest.mock('node-fetch');
 import fetch from 'node-fetch';
 const {Response} = jest.requireActual('node-fetch');
 
-
+beforeAll(() => jest.spyOn(window, 'fetch'))
 
 test('testing api', async () => {
 
@@ -22,8 +22,6 @@ test('testing api', async () => {
 
     screen.debug();
 })
-
-
 
 
 //find the text input

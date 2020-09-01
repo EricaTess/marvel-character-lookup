@@ -105,8 +105,7 @@ export default class Characters extends Component {
 
 //For testing fetch request
 export const getCharacters = async () => {
-    const response = await fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=' 
-            + process.env.REACT_APP_API_KEY + '&nameStartsWith=thor');
+    const response = await fetch('https://gateway.marvel.com:443/v1/public/characters');
     const charName = await response.text();
     return charName;
 }
