@@ -51,7 +51,8 @@ export default class Characters extends Component {
             characters: data.data.results
             },
             console.log(data.data.results))  
-        );
+        )
+        .catch(err => console.log("Error: ", err))
     }
 
     showCharacter = () => {
@@ -85,6 +86,7 @@ export default class Characters extends Component {
                             <FormControl
                                 className="search-input-box"
                                 placeholder="Search"
+                                aria-label="input"
                                 onChange={this.handleTextInput} />
                         </InputGroup>
                     </form>

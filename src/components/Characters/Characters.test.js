@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Characters from './Characters';
-import { render, screen, fireEvent, wait } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import {getCharacters} from './Characters';
+import fetch from 'node-fetch';
+import { Popover } from 'react-bootstrap';
 
 
 jest.mock('node-fetch');
-import fetch from 'node-fetch';
 const {Response} = jest.requireActual('node-fetch');
 
 beforeAll(() => jest.spyOn(window, 'fetch'))
@@ -23,14 +24,20 @@ test('testing api', async () => {
     screen.debug();
 })
 
-it("Should allow the user to type a word to search for", async () => {
-    const searchString = "hello";
-    const { container, getByPlaceholderText, getByText, debug } = render(<Characters />)
-    const inputNode = getByPlaceholderText('Search')
-    fireEvent.change(inputNode, {target : {value : searchString}})
-    const updatedValue = await wait(() => getByText('hello'))
-  });
+const setup = () => {
+    const utils = render(<Characters />)
+    const input = utils.getByLabelText('input')
+    return {
+        input,
+        ...utils,
+    }
+}
 
-//find the text input
-//send keys to fetch request ~fire event key down
-//assert fetch was called ~
+it("Should add query prefix to user input", async () => {
+    jest.clearAllMocks();
+    
+    const { input } = setup()
+    fireEvent.change(input, { target: { value: 'thor' } })
+    expect(input.value).toBe('thor')
+    screen.debug();
+  });
