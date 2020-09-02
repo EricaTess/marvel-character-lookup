@@ -28,7 +28,7 @@ Clone repository:
 $ git clone https://github.com/EricaTess/udemy-challenge.git
 ```
 
-Replace 'process.env.REACT_APP_API_KEY' in Characters.js file with Marvel API Key
+Replace 'process.env.REACT_APP_API_KEY' in Characters.js file with Marvel API PUBLIC Key
 
 Start App:
 ```
