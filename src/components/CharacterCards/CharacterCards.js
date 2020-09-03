@@ -12,6 +12,7 @@ export default class CharacterCards extends Component {
         }
     }
 
+    //Shows Character Information when hovering over card
     showCharInfo = () => {
         if (this.props.characters.description !== '') {
             return  (<Popover id="popover">
@@ -44,7 +45,6 @@ export default class CharacterCards extends Component {
                         </Card.Text>
                     </Card.Body>
                 </OverlayTrigger>
-                
             </Card>    
         )
     }
