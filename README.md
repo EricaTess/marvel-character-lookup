@@ -25,14 +25,14 @@ To have this app running on your local computer, please follow the below steps:
 
 Clone repository:
 ```
-$ git clone https://github.com/EricaTess/udemy-challenge.git
+$ git clone https://github.com/EricaTess/marvel-character-lookup.git
 ```
 
 Replace 'process.env.REACT_APP_API_KEY' in Characters.js file with Marvel API PUBLIC Key
 
 Start App:
 ```
-$ cd udemy-challenge
+$ cd marvel-character-lookup
 $ npm install
 $ npm start
 ```
