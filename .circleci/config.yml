@@ -11,3 +11,8 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+      - slack/status:
+          fail_only: true
+          mentions: 'USERID1,USERID2'
+          only_for_branches: only_for_branches
+          webhook: webhook
