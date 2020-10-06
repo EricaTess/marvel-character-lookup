@@ -13,6 +13,4 @@ jobs:
       - run: npm test
       - slack/status:
           fail_only: false
-          mentions: 'USERID1,USERID2'
-          only_for_branches: only_for_branches
-          webhook: webhook
+          webhook: '${SLACK_WEBHOOK}'
