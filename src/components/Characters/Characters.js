@@ -49,8 +49,7 @@ export default class Characters extends Component {
         .then(res =>  res.json())
         .then(data => this.setState({
             characters: data.data.results
-            },
-            console.log(data.data.results))  
+            })  
         )
         .catch(err => console.log("Error: ", err))
     }
@@ -62,7 +61,6 @@ export default class Characters extends Component {
                         <p>Loading...</p>
                     </div>);
         } else if (this.state.characters.length === 0) {
-            console.log(this.state.characters === [])
             return (<div className='oops-message'>
                                 <p>Move along, Nothing to see here</p>
                                 <img src={deadpool} alt={'Nothing to see here'}/>
