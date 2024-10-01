@@ -28,7 +28,7 @@ Clone repository:
 $ git clone https://github.com/EricaTess/marvel-character-lookup.git
 ```
 
-Replace 'process.env.REACT_APP_API_KEY' in Characters.js file with Marvel API PUBLIC Key
+Create a .env file in the root of the project and add `REACT_APP_API_KEY=[Your API Key]`
 
 Start App:
 ```
